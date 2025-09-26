@@ -9,6 +9,11 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  experimental: {
+    serverComponentsExternalPackages: ['@microsoft/mgt-react'],
+  },
+  // Ensure trailing slash consistency
+  trailingSlash: false,
 }
 
 export default nextConfig

@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { generateObject } from "ai"
+import { openai } from "@ai-sdk/openai"
 import { z } from "zod"
 
 export const maxDuration = 60
@@ -38,7 +39,7 @@ export async function POST(req: NextRequest) {
     const documentText = `Sample NDA document content for ${fileName}. This would be extracted from the actual PDF.`
 
     const result = await generateObject({
-      model: "openai/gpt-4o",
+      model: openai("gpt-4o"),
       schema: NDAAnalysisSchema,
       prompt: `Analyze this NDA document and extract key information according to the nda_anatomy schema.
 

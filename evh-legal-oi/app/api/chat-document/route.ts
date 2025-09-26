@@ -1,5 +1,6 @@
 import type { NextRequest } from "next/server"
 import { streamText, convertToModelMessages } from "ai"
+import { openai } from "@ai-sdk/openai"
 
 export const maxDuration = 30
 
@@ -50,7 +51,7 @@ Please provide detailed, accurate responses about this NDA. Focus on:
 Be precise, professional, and cite specific sections when relevant.`
 
     const result = streamText({
-      model: "openai/gpt-4o",
+      model: openai("gpt-4o"),
       messages: convertToModelMessages([
         { role: "system", content: systemPrompt },
         { role: "user", content: message },

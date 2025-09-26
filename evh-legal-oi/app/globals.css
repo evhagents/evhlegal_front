@@ -1,0 +1,204 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(0.08 0 0);
+  --foreground: oklch(0.95 0 0);
+  --card: oklch(0.12 0 0);
+  --card-foreground: oklch(0.95 0 0);
+  --popover: oklch(0.12 0 0);
+  --popover-foreground: oklch(0.95 0 0);
+  --primary: oklch(0.65 0.25 280);
+  --primary-foreground: oklch(0.95 0 0);
+  --secondary: oklch(0.18 0 0);
+  --secondary-foreground: oklch(0.95 0 0);
+  --muted: oklch(0.15 0 0);
+  --muted-foreground: oklch(0.6 0 0);
+  --accent: oklch(0.7 0.2 260);
+  --accent-foreground: oklch(0.95 0 0);
+  --destructive: oklch(0.6 0.2 25);
+  --destructive-foreground: oklch(0.95 0 0);
+  --border: oklch(0.2 0 0);
+  --input: oklch(0.18 0 0);
+  --ring: oklch(0.65 0.25 280);
+  --chart-1: oklch(0.65 0.25 280);
+  --chart-2: oklch(0.7 0.2 260);
+  --chart-3: oklch(0.6 0.18 300);
+  --chart-4: oklch(0.75 0.15 240);
+  --chart-5: oklch(0.8 0.12 220);
+  --ai-primary: oklch(0.65 0.25 280);
+  --ai-secondary: oklch(0.7 0.2 260);
+  --ai-accent: oklch(0.6 0.18 300);
+  --risk-high: oklch(0.6 0.2 25);
+  --risk-medium: oklch(0.75 0.15 60);
+  --risk-low: oklch(0.7 0.15 120);
+  --radius: 0.5rem;
+  --sidebar: oklch(0.1 0 0);
+  --sidebar-foreground: oklch(0.95 0 0);
+  --sidebar-primary: oklch(0.7 0.15 160);
+  --sidebar-primary-foreground: oklch(0.08 0 0);
+  --sidebar-accent: oklch(0.15 0 0);
+  --sidebar-accent-foreground: oklch(0.95 0 0);
+  --sidebar-border: oklch(0.2 0 0);
+  --sidebar-ring: oklch(0.7 0.15 160);
+}
+
+.dark {
+  --background: oklch(0.08 0 0);
+  --foreground: oklch(0.95 0 0);
+  --card: oklch(0.12 0 0);
+  --card-foreground: oklch(0.95 0 0);
+  --popover: oklch(0.12 0 0);
+  --popover-foreground: oklch(0.95 0 0);
+  --primary: oklch(0.65 0.25 280);
+  --primary-foreground: oklch(0.95 0 0);
+  --secondary: oklch(0.18 0 0);
+  --secondary-foreground: oklch(0.95 0 0);
+  --muted: oklch(0.15 0 0);
+  --muted-foreground: oklch(0.6 0 0);
+  --accent: oklch(0.7 0.2 260);
+  --accent-foreground: oklch(0.95 0 0);
+  --destructive: oklch(0.6 0.2 25);
+  --destructive-foreground: oklch(0.95 0 0);
+  --border: oklch(0.2 0 0);
+  --input: oklch(0.18 0 0);
+  --ring: oklch(0.65 0.25 280);
+  --chart-1: oklch(0.65 0.25 280);
+  --chart-2: oklch(0.7 0.2 260);
+  --chart-3: oklch(0.6 0.18 300);
+  --chart-4: oklch(0.75 0.15 240);
+  --chart-5: oklch(0.8 0.12 220);
+  --ai-primary: oklch(0.65 0.25 280);
+  --ai-secondary: oklch(0.7 0.2 260);
+  --ai-accent: oklch(0.6 0.18 300);
+  --risk-high: oklch(0.6 0.2 25);
+  --risk-medium: oklch(0.75 0.15 60);
+  --risk-low: oklch(0.7 0.15 120);
+  --sidebar: oklch(0.1 0 0);
+  --sidebar-foreground: oklch(0.95 0 0);
+  --sidebar-primary: oklch(0.7 0.15 160);
+  --sidebar-primary-foreground: oklch(0.08 0 0);
+  --sidebar-accent: oklch(0.15 0 0);
+  --sidebar-accent-foreground: oklch(0.95 0 0);
+  --sidebar-border: oklch(0.2 0 0);
+  --sidebar-ring: oklch(0.7 0.15 160);
+}
+
+/* Added Daisy UI theme definitions */
+[data-theme="garden"] {
+  --emerald-300: #f1f0f0; /* Warm brown text */
+  --emerald-400: #c4a484; /* Light tan silk */
+  --emerald-500: #a67c52; /* Medium tan silk */
+  --emerald-600: #8b5a2b; /* Deep tan silk */
+  --surface-900: #faf8f5; /* Light cream background */
+  --surface-800: #f7f4f0; /* Warm cream card background */
+  --border-weak: rgba(196, 164, 132, 0.25); /* Light tan border */
+  --border-emerald: rgba(166, 124, 82, 0.5); /* Tan accent border */
+  --wave-color0: rgba(196, 164, 132, 0.15); /* Light tan for waves */
+  --wave-color1: rgba(166, 124, 82, 0.22); /* Medium tan for waves */
+
+  /* Override main theme colors for garden theme */
+  --background: var(--surface-900);
+  --foreground: var(--emerald-300);
+  --card: var(--surface-800);
+  --card-foreground: var(--emerald-300);
+  --border: var(--border-weak);
+  --primary: var(--emerald-500);
+  --primary-foreground: var(--surface-900);
+  --secondary: var(--emerald-400);
+  --secondary-foreground: var(--emerald-600);
+  --muted: var(--surface-800);
+  --muted-foreground: var(--emerald-600);
+}
+
+/* Adding medium grey color for H1-H3 headings in garden theme */
+[data-theme="garden"] h1,
+[data-theme="garden"] h2,
+[data-theme="garden"] h3 {
+  color: #6b7280; /* Medium grey color */
+}
+
+[data-theme="dailyui"] {
+  --emerald-300: #d4edda; /* Light forest green */
+  --emerald-400: #68a085; /* Medium forest green */
+  --emerald-500: #2d5a3d; /* Deep forest green */
+  --emerald-600: #1e3a28; /* Dark forest green */
+  --surface-900: #0f1b0f; /* Dark forest background */
+  --surface-800: #1a2e1a; /* Forest card background */
+  --border-weak: rgba(212, 237, 218, 0.15); /* Light forest border */
+  --border-emerald: rgba(104, 160, 133, 0.6); /* Forest accent border */
+  --wave-color0: rgba(104, 160, 133, 0.25); /* Light forest for waves */
+  --wave-color1: rgba(45, 90, 61, 0.35); /* Deep forest for waves */
+
+  /* Override main theme colors for dailyui theme */
+  --background: var(--surface-900);
+  --foreground: var(--emerald-300);
+  --card: var(--surface-800);
+  --card-foreground: var(--emerald-300);
+  --border: var(--border-weak);
+  --primary: var(--emerald-400);
+  --primary-foreground: var(--surface-900);
+  --secondary: var(--emerald-500);
+  --secondary-foreground: var(--emerald-300);
+  --muted: var(--surface-800);
+  --muted-foreground: var(--emerald-400);
+}
+
+@theme inline {
+  /* Updated font configuration to use Libre Baskerville */
+  --font-serif: var(--font-libre-baskerville);
+  --font-sans: var(--font-libre-baskerville);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-ai-primary: var(--ai-primary);
+  --color-ai-secondary: var(--ai-secondary);
+  --color-ai-accent: var(--ai-accent);
+  --color-risk-high: var(--risk-high);
+  --color-risk-medium: var(--risk-medium);
+  --color-risk-low: var(--risk-low);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}

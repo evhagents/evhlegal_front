@@ -9,7 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Search, Filter, Users, Brain, Target, Zap, AlertTriangle, TrendingUp, MessageCircle, Mail } from "lucide-react"
-import { Person } from "@microsoft/mgt-react"
+import dynamic from "next/dynamic"
 import { PersonalityRadarChart } from "@/components/personality-radar-chart"
 
 // Persona data based on the provided DISC assessments
@@ -163,6 +163,9 @@ const personas = [
   },
 ]
 
+// Dynamically import Microsoft Graph Toolkit Person to avoid SSR (uses document/window)
+const MgtPerson = dynamic(async () => (await import("@microsoft/mgt-react")).Person, { ssr: false })
+
 export default function UsersPage() {
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedPersona, setSelectedPersona] = useState<string | null>(null)
@@ -226,11 +229,11 @@ export default function UsersPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <div className="text-sm font-medium">Person card Hover</div>
-                  <Person personQuery="me" view="twolines" personCardInteraction="hover" />
+                  <MgtPerson personQuery="me" view="twolines" personCardInteraction="hover" />
                 </div>
                 <div className="space-y-2">
                   <div className="text-sm font-medium">Person card Click</div>
-                  <Person personQuery="me" view="twolines" personCardInteraction="click" />
+                  <MgtPerson personQuery="me" view="twolines" personCardInteraction="click" />
                 </div>
               </div>
             </CardContent>

@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: evh-legal-frontend
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: OPENAI_API_KEY
+        fromService:
+          type: secret
+          name: openai-api-key
+    healthCheckPath: /
+    autoDeploy: true

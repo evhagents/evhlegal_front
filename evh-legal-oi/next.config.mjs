@@ -14,6 +14,8 @@ const nextConfig = {
   },
   // Ensure trailing slash consistency
   trailingSlash: false,
+  // Enable standalone output for Docker
+  output: 'standalone',
 }
 
 export default nextConfig

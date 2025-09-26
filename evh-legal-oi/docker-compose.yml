@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  # Next.js Frontend
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - PHOENIX_API_URL=http://phoenix:4000
+    depends_on:
+      - phoenix
+    networks:
+      - evh-network
+
+  # Phoenix Backend (placeholder for future)
+  phoenix:
+    build:
+      context: ../phoenix-backend  # Adjust path as needed
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    environment:
+      - MIX_ENV=prod
+      - DATABASE_URL=${DATABASE_URL}
+      - SECRET_KEY_BASE=${SECRET_KEY_BASE}
+    networks:
+      - evh-network
+    # Uncomment when Phoenix backend is ready
+    # command: mix phx.server
+
+  # Database (for Phoenix)
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=evhlegal
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - evh-network
+    # Uncomment when Phoenix backend is ready
+    # ports:
+    #   - "5432:5432"
+
+  # Redis (for Phoenix caching/sessions)
+  redis:
+    image: redis:7-alpine
+    networks:
+      - evh-network
+    # Uncomment when Phoenix backend is ready
+    # ports:
+    #   - "6379:6379"
+
+volumes:
+  postgres_data:
+
+networks:
+  evh-network:
+    driver: bridge
